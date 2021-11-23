@@ -9,14 +9,10 @@ const ListaProductos = () => {
       <hr />
       <article className="d-flex align-items-center mb-4 justify-content-end">
         <p className="my-0 me-4 fw-bold">Agregar nuevos productos: </p>
-        <Button variant="primary" onClick={handleShow}>
-          Agregar
-        </Button>
+        <Button variant="primary">Agregar</Button>
       </article>
       <ListGroup>
-        {props.productos.map(() => (
-          <ItemProducto></ItemProducto>
-        ))}
+        {<ItemProducto></ItemProducto>}
       </ListGroup>
     </Container>
   );
