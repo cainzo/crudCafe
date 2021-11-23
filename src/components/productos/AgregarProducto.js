@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 
+
 const AgregarProducto = () => {
+  const [nombreProducto, setNombreProducto] = useState('');
+  const [precioProducto, setPrecioProducto] = useState(0);
+  const [Categoria, setCategoria] = useState('');
+
   return (
     <Container>
       <h1 className="display-3 text-center my-4">Nuevo Producto</h1>
@@ -9,22 +14,22 @@ const AgregarProducto = () => {
       <Form className="my-5">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nombre del producto*</Form.Label>
-          <Form.Control type="text" placeholder="Ej: café" />
+          <Form.Control type="text" placeholder="Ej: café" onChange={(e)=>{setNombreProducto(e.target.value)}} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Precio*</Form.Label>
-          <Form.Control type="number" placeholder="ej: 50" />
+          <Form.Control type="number" placeholder="ej: 50" onChange={(e)=>{setPrecioProducto(e.target.value)}} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Label>Categoria*</Form.Label>
-          <Form.Select>
-            <option>Seleccione una opcion</option>
-            <option>Bebida Caliente</option>
-            <option>Bebida Fria</option>
-            <option>Sandwich</option>
-            <option>Dulce</option>
-            <option>Salado</option>
+          <Form.Select onChange={(e)=>{setCategoria(e.target.value)}}>
+            <option value=''>Seleccione una opcion</option>
+            <option value='bebida-caliente'>Bebida Caliente</option>
+            <option value='bebida-fria'>Bebida Fria</option>
+            <option value='sandwich'>Sandwich</option>
+            <option value='dulce'>Dulce</option>
+            <option value='salado'>Salado</option>
           </Form.Select>
         </Form.Group>
         <Button variant="primary" type="submit" className="w-100">
