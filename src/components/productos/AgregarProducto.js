@@ -1,17 +1,57 @@
 import React, {useState} from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
-
+import { campoRequerido, rangoNumero } from "../validaciones/helpers";
 
 const AgregarProducto = () => {
   const [nombreProducto, setNombreProducto] = useState('');
   const [precioProducto, setPrecioProducto] = useState(0);
-  const [Categoria, setCategoria] = useState('');
+  const [categoria, setCategoria] = useState('');
+  const [error , setError] = useState(null);
+  const URL = process.env.REACT_APP_API_URL;
 
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+    //validar los datos del form
+    if (campoRequerido(nombreProducto) && campoRequerido(categoria) && rangoNumero(precioProducto)){
+      setError(false);
+      //crear producto y guardarlo en api
+      
+      const productoNuevo = {
+        nombreProducto,
+        precioProducto,
+        categoria
+      }
+      try{
+        const parametros={
+          method: "POST",
+          headers:{
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(productoNuevo)
+        }
+        const repuesta = await fetch(URL, parametros)
+        console.log(repuesta);
+        if(repuesta === 201){
+          console.log('El producto se cargo correctamene')
+        }else{
+          console.log('El producto no se cargo correctamene')
+        }
+      }catch(error){
+        
+      }
+      
+    }else{
+      //si no se carga, se muetra cartel de error
+      console.log('NO se creo el producto');
+      setError(true);
+    }
+
+  }
   return (
     <Container>
       <h1 className="display-3 text-center my-4">Nuevo Producto</h1>
       <hr />
-      <Form className="my-5">
+      <Form className="my-5" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Nombre del producto*</Form.Label>
           <Form.Control type="text" placeholder="Ej: café" onChange={(e)=>{setNombreProducto(e.target.value)}} />
@@ -36,6 +76,11 @@ const AgregarProducto = () => {
           Guardar
         </Button>
       </Form>
+      {error === true ?
+      <Alert variant='danger'>
+        Debe cargar todos los datos y el precio debe estar entre 1 y $4999.
+      </Alert>
+      : null}
     </Container>
   );
 };

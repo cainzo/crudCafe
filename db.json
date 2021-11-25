@@ -4,19 +4,19 @@
       "id": 1,
       "nombreProducto": "Cafe con leche",
       "precioProducto": "50",
-      "categoria":"bebida-caliente"
+      "categoria": "bebida-caliente"
     },
     {
       "id": 2,
       "nombreProducto": "Medialuna",
       "precioProducto": "20",
-      "categoria":"dulce"
+      "categoria": "dulce"
     },
     {
       "id": 3,
       "nombreProducto": "Cafe",
       "precioProducto": "40",
-      "categoria":"bebida-caliente"
+      "categoria": "bebida-caliente"
     }
   ]
 }

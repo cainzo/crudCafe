@@ -22,14 +22,14 @@ function App() {
 
   const consultaAPI = async () => {
     try {
-     const respuesta = await fetch(URL);
-     const datos = await respuesta.json();
-     //console.log(datos);
-     setProductos(datos);
+      const respuesta = await fetch(URL);
+      const datos = await respuesta.json();
+      //console.log(datos);
+      setProductos(datos);
     } catch (error) {
-     console.log(error);
+      console.log(error);
     }
-  }
+  };
 
   return (
     <Router>
