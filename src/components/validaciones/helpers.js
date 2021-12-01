@@ -16,4 +16,3 @@ export const rangoNumero = (x) => {
         }
 };
 
-//export {campoRequerido, rangoNumero}

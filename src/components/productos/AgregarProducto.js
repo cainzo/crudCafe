@@ -1,13 +1,16 @@
 import React, {useState} from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { campoRequerido, rangoNumero } from "../validaciones/helpers";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
-const AgregarProducto = () => {
+const AgregarProducto = (props) => {
   const [nombreProducto, setNombreProducto] = useState('');
   const [precioProducto, setPrecioProducto] = useState(0);
   const [categoria, setCategoria] = useState('');
   const [error , setError] = useState(null);
   const URL = process.env.REACT_APP_API_URL;
+  const navigation = useNavigate();
 
   const handleSubmit = async(e) =>{
     e.preventDefault();
@@ -29,15 +32,26 @@ const AgregarProducto = () => {
           },
           body: JSON.stringify(productoNuevo)
         }
-        const repuesta = await fetch(URL, parametros)
+        const repuesta = await fetch(URL, parametros);
         console.log(repuesta);
-        if(repuesta === 201){
+        if(repuesta.status === 201){
           console.log('El producto se cargo correctamene')
+          Swal.fire(
+            'Producto creado',
+            'Su producto fue correctamente creado',
+            'success'
+          )
+          //resetear el formulario
+          e.target.reset();
+          // volver a consultar api
+          props.consultaAPI();
+          //redireccionar a la pagina de mostrar productos
+          navigation("/productos");
         }else{
           console.log('El producto no se cargo correctamene')
         }
       }catch(error){
-        
+        console.log(error);
       }
       
     }else{
