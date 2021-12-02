@@ -1,7 +1,48 @@
 import React from "react";
 import { ListGroup, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 const ItemProducto = (props) => {
+  const URL = process.env.REACT_APP_API_URL + '/'+ props.producto.id;
+  
+  function eliminarProducto(){
+    console.log(URL);
+    Swal.fire({
+      title: 'Esta seguro de eliminar el producto?',
+      text: "Una vez borrado el producto no puede ser recuperado",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Borrar',
+      cancelButtonText: 'Cancelar'
+    }).then(async(result) => {
+      if (result.isConfirmed) {
+        //borro el producto
+        try{
+          const repuesta = await fetch(URL, {
+            method: "DELETE",
+            headers:{
+              "Content-Type": "application/json"
+            }
+          });
+          console.log(repuesta);
+          if(repuesta.status === 200){
+            //cartel para el usuario
+        Swal.fire(
+          'Producto eliminado',
+          'El producto fue eliminado de la base de datos',
+          'success'
+        )
+        // volver a consultar api
+        props.consultaAPI();
+          }
+        }catch(error){
+          console.log(error);
+        }
+      }
+    })
+  }
   return (
     <ListGroup.Item className="d-flex justify-content-between">
       <p>
@@ -10,7 +51,7 @@ const ItemProducto = (props) => {
       </p>
       <div>
         <Button variant="warning">Editar</Button>
-        <Button variant="danger">Borrar</Button>
+        <Button variant="danger" onClick={()=> eliminarProducto()}>Borrar</Button>
       </div>
     </ListGroup.Item>
   );

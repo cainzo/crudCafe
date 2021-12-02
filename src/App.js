@@ -38,7 +38,7 @@ function App() {
         <Route path="/" element={<Inicio></Inicio>}></Route>
         <Route
           path="/productos"
-          element={<ListaProductos productos={productos}></ListaProductos>}
+          element={<ListaProductos productos={productos} consultaAPI={consultaAPI}></ListaProductos>}
         ></Route>
         <Route
           path="/productos/nuevo"

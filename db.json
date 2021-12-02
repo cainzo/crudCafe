@@ -1,12 +1,6 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombreProducto": "Cafe con leche",
-      "precioProducto": "50",
-      "categoria": "bebida-caliente"
-    },
-    {
       "id": 2,
       "nombreProducto": "Medialuna",
       "precioProducto": "20",
@@ -19,28 +13,10 @@
       "categoria": "bebida-caliente"
     },
     {
-      "nombreProducto": "asd123",
-      "precioProducto": "123",
-      "categoria": "sandwich",
+      "nombreProducto": "Vaso de awa",
+      "precioProducto": "75",
+      "categoria": "bebida-fria",
       "id": 4
-    },
-    {
-      "nombreProducto": "licuado de banana",
-      "precioProducto": "200",
-      "categoria": "bebida-fria",
-      "id": 5
-    },
-    {
-      "nombreProducto": "licuado de durazno",
-      "precioProducto": "3500",
-      "categoria": "bebida-fria",
-      "id": 6
-    },
-    {
-      "nombreProducto": "licuado de durazno",
-      "precioProducto": "555",
-      "categoria": "bebida-fria",
-      "id": 7
     }
   ]
 }
