@@ -15,6 +15,7 @@ function App() {
   const URL = process.env.REACT_APP_API_URL;
   //console.log(URL);
   const [productos, setProductos] = useState([]);
+  
 
   useEffect(() => {
     consultaAPI();
@@ -45,12 +46,14 @@ function App() {
           element={<AgregarProducto consultaAPI={consultaAPI}></AgregarProducto>}
         ></Route>
         <Route
-          path="/productos/editar"
-          element={<EditarProducto></EditarProducto>}
+          path="/productos/editar/:id"
+          element={<EditarProducto consultaAPI={consultaAPI}></EditarProducto>}
         ></Route>
         <Route path="*" element={<Error404></Error404>}></Route>
       </Routes>
-      <Footer></Footer>
+      <Footer>
+        
+      </Footer>
     </Router>
   );
 }

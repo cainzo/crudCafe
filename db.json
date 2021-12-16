@@ -1,22 +1,16 @@
 {
   "productos": [
     {
-      "id": 2,
-      "nombreProducto": "Medialuna",
-      "precioProducto": "20",
-      "categoria": "dulce"
-    },
-    {
-      "id": 3,
-      "nombreProducto": "Cafe",
-      "precioProducto": "40",
-      "categoria": "bebida-caliente"
-    },
-    {
-      "nombreProducto": "Vaso de awa",
-      "precioProducto": "75",
+      "nombreProducto": "Vasito de awa",
+      "precioProducto": "2555",
       "categoria": "bebida-fria",
       "id": 4
+    },
+    {
+      "nombreProducto": "cafesito7",
+      "precioProducto": "777",
+      "categoria": "bebida-fria",
+      "id": 5
     }
   ]
 }
